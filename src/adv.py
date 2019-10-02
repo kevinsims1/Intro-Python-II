@@ -67,9 +67,24 @@ while player_input.lower() != "exit":
 
     if player_input == 'N' and player1.CurrentRoom == 'outside':
         player1.CurrentRoom = 'foyer'
-
-    if player_input == 'N' and player1.CurrentRoom == 'foyer':
+        
+    elif player_input == 'N' and player1.CurrentRoom == 'foyer':
         player1.CurrentRoom = 'overlook'
-
-    if player_input == 'N' and player1.CurrentRoom == 'narrow':
+            
+    elif player_input == 'N' and player1.CurrentRoom == 'narrow':
         player1.CurrentRoom = 'treasure'
+    
+    if player_input == 'S' and player1.CurrentRoom == 'foyer':
+        player1.CurrentRoom = 'outside'
+        
+    elif player_input == 'S' and player1.CurrentRoom == 'overlook':
+        player1.CurrentRoom = 'foyer'
+            
+    elif player_input == 'S' and player1.CurrentRoom == 'treasure':
+        player1.CurrentRoom = 'narrow'
+
+    if player_input == 'E' and player1.CurrentRoom == 'foyer':
+        player1.CurrentRoom = 'narrow'
+        
+    if player_input == 'W' and player1.CurrentRoom == 'narrow':
+        player1.CurrentRoom = 'foyer'
