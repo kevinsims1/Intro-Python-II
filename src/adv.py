@@ -1,5 +1,7 @@
 from room import Room
 
+from items import Room_items
+
 from player import Player
 
 # Declare all the rooms
@@ -61,7 +63,7 @@ while player_input.lower() != "exit":
     player_input=""
     for key, value in room.items():
         if key == player1.CurrentRoom:
-            print(f'Current Room: {key}, Description: {value.description}')
+            print(f'Current Room: {value.name}, Description: {value.description}')
 
     player_input = input("Please select a direction, 'N,S,E,W': ")
 
