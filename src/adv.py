@@ -72,24 +72,28 @@ while player_input.lower() != "exit":
             player1.CurrentRoom = player1.CurrentRoom.n_to
             print(player1.CurrentRoom)
         else:
-            print('error N')
+            print('OH NO, You cant go that way!')
     
     elif player_input == 'S':
         if player1.CurrentRoom.s_to:
             player1.CurrentRoom = player1.CurrentRoom.s_to
             print(player1.CurrentRoom)
         else:
-            print('error N')
+            print('OH NO, You cant go that way!')
 
     elif player_input == 'E':
         if player1.CurrentRoom.e_to:
             player1.CurrentRoom = player1.CurrentRoom.e_to
             print(player1.CurrentRoom)
+        else:
+            print('OH NO, You cant go that way!')
 
     elif player_input == 'W':
         if player1.CurrentRoom.w_to:
             player1.CurrentRoom = player1.CurrentRoom.w_to
             print(player1.CurrentRoom)
+        else:
+            print('OH NO, You cant go that way!')
 
     # if player_input == 'N' and player1.CurrentRoom == 'outside':
     #     player1.CurrentRoom = 'foyer'
