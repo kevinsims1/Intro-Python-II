@@ -31,8 +31,8 @@ earlier adventurers. The only exit is to the south."""),
 room['outside'].n_to = room['foyer']
 room['foyer'].s_to = room['outside']
 room['foyer'].n_to = room['overlook']
-room['foyer'].e_to = room['narrow']
 room['overlook'].s_to = room['foyer']
+room['foyer'].e_to = room['narrow']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
@@ -54,39 +54,63 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 
-player1 = Player("kevin")
+player1 = Player("kevin", room["outside"])
 
 player_input = ""
 
 
 while player_input.lower() != "exit":
     player_input=""
-    for key, value in room.items():
-        if key == player1.CurrentRoom:
-            print(f'Current Room: {value.name}, Description: {value.description}')
+    # for key, value in room.items():
+    #     if key == player1.CurrentRoom:
+    #         print(f'Current Room: {value.name}, Description: {value.description}')
 
     player_input = input("Please select a direction, 'N,S,E,W': ")
 
-    if player_input == 'N' and player1.CurrentRoom == 'outside':
-        player1.CurrentRoom = 'foyer'
-        
-    elif player_input == 'N' and player1.CurrentRoom == 'foyer':
-        player1.CurrentRoom = 'overlook'
-            
-    elif player_input == 'N' and player1.CurrentRoom == 'narrow':
-        player1.CurrentRoom = 'treasure'
+    if player_input == 'N':
+        if player1.CurrentRoom.n_to:
+            player1.CurrentRoom = player1.CurrentRoom.n_to
+            print(player1.CurrentRoom)
+        else:
+            print('error N')
     
-    if player_input == 'S' and player1.CurrentRoom == 'foyer':
-        player1.CurrentRoom = 'outside'
-        
-    elif player_input == 'S' and player1.CurrentRoom == 'overlook':
-        player1.CurrentRoom = 'foyer'
-            
-    elif player_input == 'S' and player1.CurrentRoom == 'treasure':
-        player1.CurrentRoom = 'narrow'
+    elif player_input == 'S':
+        if player1.CurrentRoom.s_to:
+            player1.CurrentRoom = player1.CurrentRoom.s_to
+            print(player1.CurrentRoom)
+        else:
+            print('error N')
 
-    if player_input == 'E' and player1.CurrentRoom == 'foyer':
-        player1.CurrentRoom = 'narrow'
+    elif player_input == 'E':
+        if player1.CurrentRoom.e_to:
+            player1.CurrentRoom = player1.CurrentRoom.e_to
+            print(player1.CurrentRoom)
+
+    elif player_input == 'W':
+        if player1.CurrentRoom.w_to:
+            player1.CurrentRoom = player1.CurrentRoom.w_to
+            print(player1.CurrentRoom)
+
+    # if player_input == 'N' and player1.CurrentRoom == 'outside':
+    #     player1.CurrentRoom = 'foyer'
         
-    if player_input == 'W' and player1.CurrentRoom == 'narrow':
-        player1.CurrentRoom = 'foyer'
+    # elif player_input == 'N' and player1.CurrentRoom == 'foyer':
+    #     player1.CurrentRoom = 'overlook'
+            
+    # elif player_input == 'N' and player1.CurrentRoom == 'narrow':
+    #     player1.CurrentRoom = 'treasure'
+    
+    # if player_input == 'S' and player1.CurrentRoom == 'foyer':
+    #     player1.CurrentRoom = 'outside'
+        
+    # elif player_input == 'S' and player1.CurrentRoom == 'overlook':
+    #     player1.CurrentRoom = 'foyer'
+            
+    # elif player_input == 'S' and player1.CurrentRoom == 'treasure':
+    #     player1.CurrentRoom = 'narrow'
+
+    # if player_input == 'E' and player1.CurrentRoom == 'foyer':
+    #     player1.CurrentRoom = 'narrow'
+        
+    # if player_input == 'W' and player1.CurrentRoom == 'narrow':
+    #     player1.CurrentRoom = 'foyer'
