@@ -14,6 +14,7 @@ class Room:
         self.s_to = None
         
     # This is for dev use only
-    
-    # def __str__(self):
-    #     return f"<Room: {self.name}, description: {self.description}, Items: {self.chair}"
+#Room: {self.name}, description: {self.description}, 
+
+    def __str__(self):
+        return f"<Items: {self.chair}"

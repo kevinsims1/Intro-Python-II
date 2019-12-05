@@ -3,7 +3,7 @@ from room import Room
 from player import Player
 
 #items
-from items import Room_item, Generic_Chair
+from items import Room_item, Generic_Chair, Healing_Chair
 
 # Declare all the rooms
 
@@ -16,7 +16,7 @@ passages run north and east.""", Generic_Chair()),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", Healing_Chair()),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
 to north. The smell of gold permeates the air."""),
@@ -66,6 +66,7 @@ while player_input.lower() != "exit":
 
     player_input = input("Please select a direction, 'N,S,E,W': ")
 
+#### Directions
     if player_input == 'N':
         if player1.CurrentRoom.n_to:
             player1.CurrentRoom = player1.CurrentRoom.n_to
@@ -93,6 +94,20 @@ while player_input.lower() != "exit":
             print(player1.CurrentRoom)
         else:
             print('OH NO, You cant go that way!')
+
+#### Actions
+    elif player_input == "Sit":
+        if player1.CurrentRoom.chair:
+            player1.CurrentRoom.chair.sit()
+            # Healing Chair
+            if player1.CurrentRoom.chair.name == "Healing Chair":
+                if player1.health < 100:
+                    player1.heal()
+
+    elif player_input == "Stand":
+        if player1.CurrentRoom.chair:
+            player1.CurrentRoom.chair.stand()
+
 
     # if player_input == 'N' and player1.CurrentRoom == 'outside':
     #     player1.CurrentRoom = 'foyer'
