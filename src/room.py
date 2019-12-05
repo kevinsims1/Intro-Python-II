@@ -2,13 +2,18 @@
 # description attributes.
 
 class Room:
-    def __init__(self, name, description):
+    def __init__(self, name, description, chair=None):
         self.name = name
         self.description = description
+        #items
+        self.chair = chair
+        #directions
         self.n_to = None
         self.w_to = None
         self.e_to = None
         self.s_to = None
-
-    def __str__(self):
-        return f"<Room: {self.name}, description: {self.description}"
+        
+    # This is for dev use only
+    
+    # def __str__(self):
+    #     return f"<Room: {self.name}, description: {self.description}, Items: {self.chair}"

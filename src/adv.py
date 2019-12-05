@@ -1,8 +1,9 @@
 from room import Room
 
-from items import Room_items
-
 from player import Player
+
+#items
+from items import Room_item, Generic_Chair
 
 # Declare all the rooms
 
@@ -11,7 +12,7 @@ room = {
                      "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", Generic_Chair()),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
@@ -61,9 +62,7 @@ player_input = ""
 
 while player_input.lower() != "exit":
     player_input=""
-    # for key, value in room.items():
-    #     if key == player1.CurrentRoom:
-    #         print(f'Current Room: {value.name}, Description: {value.description}')
+    print(f'Current Room: {player1.CurrentRoom.name}, Description: {player1.CurrentRoom.description}')
 
     player_input = input("Please select a direction, 'N,S,E,W': ")
 
